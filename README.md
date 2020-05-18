@@ -85,3 +85,13 @@ set ignorecase
 set smartcase     
 set showmatch     
 " }}}     
+
+" Folding {{{
+set foldenable
+set foldlevelstart=10
+set foldnestmax=10
+set foldmethod=indent
+set modelines=1 " Sets us up for the last line customization for just this file
+" }}} 
+
+" vim:foldmethod=marker:foldlevel=0
