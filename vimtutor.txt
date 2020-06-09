@@ -1,0 +1,95 @@
+" Most useful stuff tagged with ~!~, can ctrl-f ~!~ for most useful commands (subjective-ish)
+"	Usefulness based on what to learn first as a beginner.
+
+" Can modify favorite settings in .vimrc file, usually in home directory for startup customization
+
+" Some necessary understanding...									~!~
+"   To appreciate Vim you gotta know what motions are.
+"   By pressing d you inform vim you're using the delete motion. Any character proceeding d
+"	will trigger a special form of deletion. For example, dw deletes the word you're 
+"	hovering over. d} deletes the next paragraph. db deletes the previous word.
+"   You can set multiples of motions by setting a preceeding number. For example, 4w moves the
+"	cursor over 4 words.
+"   With this in mind... d4w will delete 4 words from your cursor to the right. 4dd will delete
+"	4 lines from your cursor downwards.
+"   d technically 'cuts', it doesn't 'delete'. So you can paste/put after 'deletion'
+
+" Motions (<M>)
+d		" Delete 				("delete")					~!~
+c		" Delete and put in Insert after 	("change")					~!~
+r		" Replace 				("replace")
+
+" Mode Modification
+ESC		" Puts you in NORMAL mode								~!~
+		" (Change ESCAPE to CAPS-LOCK)
+i 		" Go into INSERT mode at cursor position						~!~
+I		" Go into INSERT mode at the beginning of the line (farthest left).
+A		" Puts you in INSERT mode at the end of the line (farthest right).
+a		" Puts you in INSERT mode at the right of the character your cursor /was/ over.
+v		" Puts you in VISUAL mode (starting at cursor, going by character)
+V 		" Puts you in VISUAL mode, but selects entire line and moves line-by-line
+R		" Puts you in REPLACE mode
+
+" File Modification
+	" (Normal mode assumed)
+	" I use motion d for most of these, but recognize most other motions can be used instead.
+	" 	For example, you could use cd to delete the entire line and go into insert mode,
+	"	as opposed to dd to just delete the entire line.
+ZQ 		" Exit w/o saving									~!~
+ZZ 		" Save and Exit										~!~
+x		" Delete character 
+dw		" Delete word (have to be at beginning of word)						~!~
+D		" Delete the rest of the line (proceeding your cursor)
+dd		" Delete the entire line
+diw		" Delete just the word (DOESN'T have to be at beginning of word)
+daw		" Delete word and surrounding whitespace (DOESN'T have to be at beginning of word)
+dip		" Delete the paragraph
+dap		" Delete the paragraph and the surrounding whitespace					~!~
+di(		" Delete everything INSIDE the parenthesis
+da(		" Delete everything inside and INCLUDING the parenthesis
+di"		" Delete everything inside the quote
+da"		" Delete everything inside and including the quote
+u		" Undo											~!~
+CTRL+r		" Redo											~!~
+:earlier 5m	" Goes back to file-status 5 minutes ago. 5 can be replaced with any integer.
+:later 5m	" Goes to file-status 5 minutes in the future from where your file is. 
+p		" Paste/put (doesn't work for system clipboard, only vim clipboard)
+o		" Put cursor at position of a new (not next) paragraph, also creates newline		~!~
+		"	buffer after, and puts you in insert mode.
+y		" Copy/yank										~!~
+<v> >		" <v> indicating must be in visual mode, and then '>' moves content right one tab.
+<v> <		" <v> indicating must be in visual mode, and then '<' moves content left one tab.
+
+" Cursor Modification
+	" (Normal mode assumed)
+zt 		" Put cursor at top
+zz 		" Put cursor in middle
+{		" Move up to next paragraph
+} 		" Move down to next paragraph
+A		" Puts you in insert mode at the end of the line.
+0		" Put cursor at beginning of line
+$		" Put cursor at end of line
+w		" Put cursor at beginning of next word in line
+e		" Put cursor at end of next word in line
+b		" Put cursor at previous word in line
+25%		" Put cursor at 25% point of file (can be any percent)
+G		" Put cursor at end of file
+gg		" Put cursor at beginning of file
+o		" Put cursor at position of a new (not next) paragraph 
+%		" Jump to pairing object. 
+		"	For example, if cursor over (, it goes to next ).
+		" 	Works for ([{}])
+''		" Go back to previous location
+
+" Searching and Replacing
+	" (Normal mode assumed)
+	" Considering this separate from a motion.
+/		" Any text proceesing this is highlighted and cursor goes to first instance of it	~!~
+		" Searches FORWARD from cursor position
+?		" Same as '/', but searches BACKWARD from cursor position
+:s/dog/cat/ 	" Only replaces first 'dog' with 'cat'
+:%s/dog/cat/	" Replaces every occurance of 'dog' with 'cat'
+		" Worth considering the mapping of the following in .vimrc file
+		" nnoremap S :%s//g<Left><Left>
+:noh		" Remove highlighting produced by search
+
